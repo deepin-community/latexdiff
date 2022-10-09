@@ -1,0 +1,24 @@
+From: Reiner Herrmann <reiner@reiner-h.de>
+Subject: Don't embed build date into documentation
+
+--- a/doc/latexdiff-man.tex
++++ b/doc/latexdiff-man.tex
+@@ -7,7 +7,7 @@
+ %\setlength{\oddsidemargin}{0.0in}                                                                                  
+ \title{Marking up differences between latex files with {\em latexdiff}}
+ \author{F.J. Tilmann\thanks{tilmann@gfz-potsdam.de}}
+-\date{\today}
++\date{}
+ 
+ \begin{document}
+ \maketitle
+--- a/doc/example-diff.tex
++++ b/doc/example-diff.tex
+@@ -15,6 +15,7 @@
+ 
+ \title{latexdiff Example - \DIFdelbegin \DIFdel{Draft }\DIFdelend \DIFaddbegin \DIFadd{Revised }\DIFaddend version}
+ \author{F Tilmann}
++\date{}
+ % Note how in the preamble visual markup is never used (even %DIF > 
+ % if some preamble might eventually end up as visible text.) %DIF > 
+ %DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF

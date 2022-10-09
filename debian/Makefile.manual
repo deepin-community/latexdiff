@@ -1,0 +1,20 @@
+# this Makefile originally written by Frederik Tilman. Modified for Debian by David Bremner.
+DIR=doc
+latexdiff-man.pdf: $(DIR)/latexdiff-man.tex latexdiff.tex latexdiff-vc.tex latexrevise.tex example-diff.pdf
+		pdflatex $(DIR)/latexdiff-man.tex
+		pdflatex $(DIR)/latexdiff-man.tex
+
+latexdiff.tex: latexdiff
+	pod2latex latexdiff; sed 's/--/-{}-/g' latexdiff.tex > tmp$$.tex ; mv tmp$$.tex latexdiff.tex
+
+latexrevise.tex: latexrevise
+	pod2latex latexrevise ; sed 's/--/-{}-/g' latexrevise.tex > tmp$$.tex ; mv tmp$$.tex latexrevise.tex
+
+latexdiff-vc.tex: latexdiff-vc
+	pod2latex latexdiff-vc; sed 's/--/-{}-/g' latexdiff-vc.tex > tmp$$.tex ; mv tmp$$.tex latexdiff-vc.tex
+
+example-diff.pdf: $(DIR)/example-diff.tex
+	pdflatex $(DIR)/example-diff.tex
+
+example-diff.tex: example/example-draft.tex example/example-rev.tex latexdiff
+	./latexdiff-fast -t UNDERLINE example/example-draft.tex example/example-rev.tex > example-diff.tex

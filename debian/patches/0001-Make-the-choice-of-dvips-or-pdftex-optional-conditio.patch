@@ -1,0 +1,51 @@
+From: David Bremner <bremner@debian.org>
+Date: Sat, 11 Dec 2010 20:19:04 -0400
+Subject: [PATCH] Make the choice of 'dvips' or 'pdftex' optional conditional on whether
+ pdflatex is producing pdf or not (using the ifpdf package).
+
+Thanks to Vincent Lefevre for the suggestion.
+---
+ latexdiff |   16 ++++++++++++++++
+ 1 files changed, 16 insertions(+), 0 deletions(-)
+
+--- a/latexdiff
++++ b/latexdiff
+@@ -4832,14 +4832,24 @@
+ %DIF END FONTSTRIKE PREAMBLE
+ 
+ %DIF CCHANGEBAR PREAMBLE
++\RequirePackage{ifpdf}
++\ifpdf
++\RequirePackage[pdftex]{changebar}
++\else
+ \RequirePackage[dvips]{changebar}
++\fi
+ \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1}
+ \providecommand{\DIFadd}[1]{\protect\cbstart{\protect\color{blue}#1}\protect\cbend}
+ \providecommand{\DIFdel}[1]{\protect\cbdelete{\protect\color{red}#1}\protect\cbdelete}
+ %DIF END CCHANGEBAR PREAMBLE
+ 
+ %DIF CFONTCHBAR PREAMBLE
++\RequirePackage{ifpdf}
++\ifpdf
++\RequirePackage[pdftex]{changebar}
++\else
+ \RequirePackage[dvips]{changebar}
++\fi
+ \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1}
+ \providecommand{\DIFadd}[1]{\protect\cbstart{\protect\color{blue}\sf #1}\protect\cbend}
+ \providecommand{\DIFdel}[1]{\protect\cbdelete{\protect\color{red}\scriptsize #1}\protect\cbdelete}
+@@ -4854,7 +4864,13 @@
+ %DIF END CULINECHBAR PREAMBLE
+ 
+ %DIF CHANGEBAR PREAMBLE
++\RequirePackage{ifpdf}
++\ifpdf
++\RequirePackage[pdftex]{changebar}
++\else
+ \RequirePackage[dvips]{changebar}
++\fi
++
+ \providecommand{\DIFadd}[1]{\protect\cbstart{#1}\protect\cbend}
+ \providecommand{\DIFdel}[1]{\protect\cbdelete}
+ %DIF END CHANGEBAR PREAMBLE

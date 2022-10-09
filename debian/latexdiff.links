@@ -1,0 +1,13 @@
+usr/share/man/man1/latexdiff-vc.1.gz usr/share/man/man1/latexdiff-cvs.1.gz
+usr/share/man/man1/latexdiff-vc.1.gz usr/share/man/man1/latexdiff-git.1.gz
+usr/share/man/man1/latexdiff-vc.1.gz usr/share/man/man1/latexdiff-hg.1.gz
+usr/share/man/man1/latexdiff-vc.1.gz usr/share/man/man1/latexdiff-rcs.1.gz
+usr/share/man/man1/latexdiff-vc.1.gz usr/share/man/man1/latexdiff-svn.1.gz
+usr/share/man/man1/latexdiff.1.gz    usr/share/man/man1/latexdiff-fast.1.gz
+
+usr/bin/latexdiff-vc   usr/bin/latexdiff-cvs
+usr/bin/latexdiff-vc   usr/bin/latexdiff-hg
+usr/bin/latexdiff-vc   usr/bin/latexdiff-git
+usr/bin/latexdiff-vc   usr/bin/latexdiff-rcs
+usr/bin/latexdiff-vc   usr/bin/latexdiff-svn
+usr/bin/latexdiff-fast usr/bin/latexdiff

@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+
+PACKAGE = $(shell dh_listpackages)
+TMP     = $(CURDIR)/debian/$(PACKAGE)
+
+%.1: %
+	pod2man $< $@
+
+%:
+	dh $@
+
+override_dh_auto_build: latexdiff.1 latexdiff-vc.1 latexrevise.1 latexdiff-man.pdf
+
+override_dh_auto_install:
+	# ignore install target from new upstream Makefile
+
+override_dh_install:
+	dh_install
+	find $(TMP)/usr/bin -type f -print0 | \
+		xargs -r0 sed -i -e '1s|^#!/usr/bin/env perl|#!/usr/bin/perl|'
+
+latexdiff-man.pdf: doc/latexdiff-man.tex debian/Makefile.manual
+	make -f debian/Makefile.manual latexdiff-man.pdf
+
+override_dh_installexamples:
+	dh_installexamples
+	sed -i '1s|^#! /bin/env python|#!/usr/bin/python|' $(TMP)/usr/share/doc/$(PACKAGE)/examples/contrib/latexchanges.py

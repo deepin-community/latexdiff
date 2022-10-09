@@ -1,0 +1,39 @@
+Source: latexdiff
+Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Uploaders: David Bremner <bremner@debian.org>
+Section: tex
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               libpod-latex-perl,
+               perl,
+               texlive-latex-base,
+               texlive-latex-recommended,
+               texlive-plain-generic
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/perl-team/modules/packages/latexdiff
+Vcs-Git: https://salsa.debian.org/perl-team/modules/packages/latexdiff.git
+Homepage: https://www.ctan.org/pkg/latexdiff
+Rules-Requires-Root: no
+
+Package: latexdiff
+Architecture: all
+Depends: ${misc:Depends},
+         ${perl:Depends}
+Recommends: texlive-latex-base,
+            texlive-latex-extra,
+            texlive-latex-recommended,
+            texlive-plain-generic
+Suggests: git | subversion | mercurial | cvs | rcs
+Description: utility to mark up significant differences between LaTeX files
+ latexdiff compares two LaTeX files and marks up significant differences
+ between them (i.e. a diff for LaTeX files). It generates a new LaTeX file
+ containing the annotated differences.
+ .
+ Various options are available for visual markup using standard LaTeX packages
+ such as 'color.sty'. Changes not directly affecting visible text, for example
+ in formatting commands, are still marked in the LaTeX source.
+ .
+ A rudimentary revision facilility is provided by another Perl script,
+ 'latexrevise', which accepts or rejects all changes. Manual editing of the
+ difference file can be used to override this default behaviour and accept or
+ reject selected changes only.
